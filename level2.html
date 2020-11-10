@@ -29,8 +29,9 @@
     <div id="instructions" class="hidden">
         <p>
             The goal of the game is to put the nodes in order.
-            Future levels will remove some of the information from the nodes, and users will
-            have to interpolate the locations without all the information about the nodes.
+            This is level two and some of the information is hidden on the nodes. 
+            If you get stuck, don't worry, just restart.  
+            The winning order is unchanged upon reload, the original starting list is just shuffled. 
         </p>
         <p>
             The nodes are represented by the containers with a bug image in them.
@@ -39,12 +40,13 @@
         </p>
         <p>
             Each node has a previous: the node that came before it, and a next: the node that comes after it.
+            But in level two some of these links are hidden.
             A node that starts the list, or head, will have no previous link to a node it will say: None. A node that ends
             the list will have no next link to a node, so that will be labeled: None.
         </p>
         <p>
-            To finish early to get a better time score, press the DUMP button to see if your list is correct.
-            The timer will stop early if you press the DUMP button, but you can't change any more nodes.
+            Once all the shuffled nodes on the left have been placed, the DUMP button will become active.
+            Press the button to check and see if you've placed the nodes in the correct order. 
         </p>
         <button id="closeInstructions" class="gamebutton" title="close instructions box">CLOSE</button>
     </div>
