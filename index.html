@@ -29,8 +29,12 @@
     <div id="instructions" class="hidden">
         <p>
             The goal of the game is to put the nodes in order.
-            Future levels will remove some of the information from the nodes, and users will
-            have to interpolate the locations without all the information about the nodes.
+            Some nodes have thier links, previous or next, hidden. 
+            Nodes can only be moved once. <br> Not to worry though, the winning order stays the same, and you can reset, and reload the game at any time.
+            Future levels will have more nodes, and make the nodes movable more than once.
+            <br>
+            I have to figure out all the front end to make that happen. <wink>
+            
         </p>
         <p>
             The nodes are represented by the containers with a bug image in them.
@@ -43,8 +47,7 @@
             the list will have no next link to a node, so that will be labeled: None.
         </p>
         <p>
-            To finish early to get a better time score, press the DUMP button to see if your list is correct.
-            The timer will stop early if you press the DUMP button, but you can't change any more nodes.
+            Once all the nodes have been moved to a selection, the dumb button will be active, and you can click it to see if your list is in the correct order.
         </p>
         <button id="closeInstructions" class="gamebutton" title="close instructions box">CLOSE</button>
     </div>
