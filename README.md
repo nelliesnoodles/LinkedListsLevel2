@@ -1,14 +1,11 @@
-# LinkedListsLevel2
-Level 2 to the Double linked list game
+# Link the Node
 
-## game play
+()[]
 
-Simply select where you think the node in the shuffled list on the left, should go in the list on the right.
+## Goal
 
-The list on the left is shuffled on each reload, but the winning order is unchanged.  
+Learn how the nodes are connected by setting thier next and previous links.
+Blog links are featured in the nav-bar. 
 
-You can only move a node once, but you can reload and restart the time at any point. 
-
-### The goal
-
-To show users how a double linked list can hold it's position in a list, even with one address, or link, masked. 
+This replaced the previous version which had hidden links and randomized order to 6 nodes.
+For demonstration purposes, I thought maybe this would be a better demo for visual learners. 
