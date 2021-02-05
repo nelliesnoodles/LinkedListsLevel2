@@ -76,6 +76,8 @@ label {
     border-bottom: 1px solid lime;
     width: 100%;
     background: #f2f2db9e;
+    font-size: 24px;
+    letter-spacing: 5px;
 }
 
 .prev {
@@ -178,7 +180,7 @@ label {
 
 }
 .winner {
-     display: none;
+    display: none;
     width: 100%;
     position: fixed;
     z-index: 15;
@@ -200,5 +202,19 @@ label {
         margin: 0;
         padding: 0;
         width: 25%;
+    }
+
+    .badge-light {
+        color: #212529;
+        background-color: #f8f9fa;
+        font-size: 1em;
+        border: 1px solid silver;
+    }
+
+    .badge-dark {
+        color: #fff;
+        background-color: #343a40;
+        font-size: 1em;
+        border: 1px solid grey;
     }
 }
