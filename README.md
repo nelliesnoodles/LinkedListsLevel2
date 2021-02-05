@@ -1,6 +1,6 @@
 # Link the Node
 
-![Screenshot of game](https://)
+![screenshot](https://github.com/nelliesnoodles/LinkedListsLevel2/blob/main/nodes.JPG)
 
 ## Goal
 
