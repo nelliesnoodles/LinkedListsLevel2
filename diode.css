@@ -1,0 +1,202 @@
+﻿body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quantico', sans-serif;
+    background: black;
+    
+   
+}
+footer {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    color: white;
+}
+.long {
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+}
+.unblur {
+    position: relative;
+    filter: blur(0);
+    z-index: 3
+}
+.chip {
+    height: 10vh;
+    width: 100vw;
+    position: relative;
+    z-index: 0;
+    background-image: url('chip.png');
+    background-repeat: repeat;
+    filter: blur(2px) grayscale(60%);
+   
+}
+a {
+    color: white;
+}
+.nav-link a{
+    color: white;
+}
+ul,li {
+   list-style: none;
+}
+.badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+    font-size: 1.5em;
+    border: 1px solid silver;
+}
+.badge-dark {
+    color: #fff;
+    background-color: #343a40;
+    font-size: 1.5em;
+    border: 1px solid grey;
+}
+.node-container {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: 50vh;
+    width: 100vw;
+    margin-top: 50px;
+}
+
+select {
+    padding: 10px;
+}
+.drop-choice-top {
+   width: 100%;
+
+}
+label {
+    border-top: 1px solid lime;
+    border-bottom: 1px solid lime;
+    width: 100%;
+    background: #f2f2db9e;
+}
+
+.prev {
+    text-align: left;
+}
+.next {
+    text-align: right;
+}
+.drop-choice-bottom {
+   width: 100%;
+}
+.animate-left {
+    animation-name: left-arrow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+/*aqua rgba(20, 255, 255, 0.8)*/
+@keyframes left-arrow {
+    0% {
+        background: linear-gradient(90deg, rgba(20, 255, 255, 0.8), transparent, transparent, transparent);
+    }
+    25% {
+        background: linear-gradient(90deg, transparent,rgba(20, 255, 255, 0.8), transparent, transparent);
+    }
+    50% {
+        background: linear-gradient(90deg, transparent, transparent, rgba(20, 255, 255, 0.8), transparent);
+    }
+    75% {
+        background: linear-gradient(90deg, transparent, transparent, transparent, rgba(20, 255, 255, 0.8));
+    }
+    100%{
+        background: transparent;
+    }
+}
+
+
+.animate-right {
+    animation-name: right-arrow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes right-arrow {
+    0% {
+        background: linear-gradient(90deg, transparent, transparent, transparent, rgba(20, 255, 255, 0.8));
+    }
+
+    25% {
+        background: linear-gradient(90deg, transparent, transparent, rgba(20, 255, 255, 0.8), transparent);
+    }
+
+    50% {
+        background: linear-gradient(90deg, transparent,rgba(20, 255, 255, 0.8), transparent, transparent);
+    }
+
+    75% {
+        background: linear-gradient(90deg, rgba(20, 255, 255, 0.8), transparent, transparent, transparent);
+    }
+
+    100% {
+        background: transparent;
+    }
+}
+.node-cell {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border: 4px solid aqua;
+    border-radius: 10px;
+   
+}
+.light {
+    
+    background: linear-gradient(45deg, #f2f2db9e, white, #f2f2db9e);
+}
+.dark {
+    
+    background: linear-gradient(45deg, #f6f3f39e, silver, #f6f3f39e);
+}
+.diode {
+    height: 100px;
+    width: 100%;
+   
+}
+
+.try-again {
+    display: none;
+    width: 100%;
+    position: fixed;
+    z-index: 15;
+    border-top: 2px solid lime;
+    border-bottom: 2px solid lime;
+    background-color: darkblue;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.winner {
+    display: none;
+    width: 100%;
+    position: fixed;
+    z-index: 15;
+    border-top: 2px solid lime;
+    border-bottom: 2px solid lime;
+    background-color: darkblue;
+    color: white;
+}
+
+
+/* MOBILE */
+@media all and (max-width: 799px) and (min-width: 220px) {
+    h1 {
+        font-size: 0.8em;
+    }
+    .node-cell {
+        margin: 0;
+        padding: 0;
+        width: 25%;
+    }
+}
