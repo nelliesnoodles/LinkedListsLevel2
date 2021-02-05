@@ -178,7 +178,7 @@ label {
 
 }
 .winner {
-    display: none;
+     display: none;
     width: 100%;
     position: fixed;
     z-index: 15;
@@ -186,6 +186,8 @@ label {
     border-bottom: 2px solid lime;
     background-color: darkblue;
     color: white;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
