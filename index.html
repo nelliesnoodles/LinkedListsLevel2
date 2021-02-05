@@ -1,183 +1,174 @@
 ﻿<!DOCTYPE html>
 
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<meta name="description" content="A linked list node sorting game." />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name=viewport content="width=device-width, initial-scale=1" />
+<meta name="keywords" content="HTML, CSS, JavaScript, Linked, Lists" />
+<meta name="author" content="Nellie Tobey" />
+<!-- BOOTSTRAP -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- GOOGLE FONT -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Quantico:wght@700&display=swap" rel="stylesheet">
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" href="diode.css" />
+<script type="text/javascript" src="diode.js"></script>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="author" content="Nellie Tobey">
-    <meta name="description" content="A small game to help those who are unfamiliar with Linked Lists get a visual representation of how they work.">
-    <!-- Scripts, Javascript, CSS-->
-    <script type="text/javascript" src="level2.js"></script>
-    <link rel="stylesheet" href="level2.css" />
-    <!--- FONT AWESOME image icons-->
-    <script src="https://kit.fontawesome.com/b570a31fd0.js" crossorigin="anonymous"></script>
-    <!-- Google font-->
-
-    <title>Link the List!</title>
+    <title>Link the Nodes</title>
 </head>
 <body>
-    <header id="header"><h1>Link the List!</h1><button id="reload" class="gamebutton red" title="press to reload and reset game">RESET</button></header>
-    <div class="flex-center">
-       
-        <div id="gamebuttons" class="show">
-            <button id="play" class="gamebutton" title="press to start timer and game">PLAY</button>
-            <button id="showInstructions" class="gamebutton-long" title="show the instructions for the game.">How to Play</button>
+   
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="nav-link navbar-brand">Link the Nodes</span>
 
-        </div>
+        <a class="nav-link" href="https://nelliesnoodles.com/2020/11/07/the-linked-lists/" target="_blank">
+            <span class="badge badge-pill badge-dark">DLL: Part 1</span>
+        </a>
+        <a class="nav-link" href="https://nelliesnoodles.com/2020/11/22/double-linked-list-part-2/" target="_blank">
+            <span class="badge badge-pill badge-dark">DLL: Part 2</span>
+        </a>
+        <a class="nav-link" href="https://nelliesnoodles.com/2020/11/22/double-linked-list-part-3/" target="_blank">
+            <span class="badge badge-pill badge-dark">DLL: Part 3</span>
+        </a>
+
+    </nav>
+
+    <div class="chip"></div>
+    <div class="winner" id="winner">
+        <h1>Correct!</h1>
+        <button class="btn btn-outline-light" onclick="reload()">Reset</button>
     </div>
-    <div id="instructions" class="hidden">
-        <p>
-            The goal of the game is to put the nodes in order.
-            Some nodes have thier links, previous or next, hidden. 
-            Nodes can only be moved once. <br> Not to worry though, the winning order stays the same, and you can reset, and reload the game at any time.
-            Future levels will have more nodes, and make the nodes movable more than once.
-            
-            
-        </p>
-        <p>
-            The nodes are represented by the containers with a bug image in them.
-            In an actual node, the data inside isn't the address, or location in the list.
-            For visual representation though, I've addressed the nodes with the color of the bug.
-        </p>
-        <p>
-            Each node has a previous: the node that came before it, and a next: the node that comes after it.
-            A node that starts the list, or head, will have no previous link to a node it will say: None. A node that ends
-            the list will have no next link to a node, so that will be labeled: None.
-        </p>
-        <p>
-            Once all the nodes have been moved to a selection, the DUMP button will be active, and you can click it to see if your list is in the correct order.
-        </p>
-        <button id="closeInstructions" class="gamebutton" title="close instructions box">CLOSE</button>
+    <div class="try-again" id="try_again">
+        <h1>Try Again</h1>
+        <button class="btn btn-outline-light" onclick="reload()">Reset</button>
     </div>
-    <main class="flex-center-column">
-
-        <div id="gamebody">
-            <div id="gamescreen" class="hidden">
-                <h1>LEVEL 2</h1>
-                <div class="hidden" id="results">
-                    <h2 id="gameover">GAMEOVER</h2>
-                    <h3 id="score"></h3>
-                </div>
-
-                <div id="game" class="gameboard">
-                    <div class="flex-center-full" id="time"><h1 id="time_element_minutes">0</h1><h1>:</h1><h1 id="time_element_seconds">00</h1></div>
-                    <button id="CHOMP" disabled class="gamebutton" title="press this button to get the chompers moving early.">DUMP</button>
-                    <div class="row-centers">
-                        <div class="wrapper" id="NodeParent">
-                            <div class="one NODE" id="node1">
-                                <h3>HIDDEN</h3><i class="fas fa-bug red">RED</i><h3>next:blue</h3>
-                                <label for="position-select1" id="labelposition-select1">Choose a position:</label>
-
-                                <select name="node1-pos" id="position-select1" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-
-                            </div>
-                            <div class="two NODE" id="node2">
-                                <h3>previous: red</h3><i class="fas fa-bug blue">BLUE</i><h3>HIDDEN</h3>
-                                <label for="position-select2" id="labelposition-select2">Choose a position:</label>
-
-                                <select name="node2-pos" id="position-select2" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-                            </div>
-                            <div class="three NODE" id="node3">
-                                <h3>HIDDEN</h3><i class="fas fa-bug purple">PURPLE</i><h3>next:orange</h3>
-                                <label for="position-select3" id="labelposition-select3">Choose a position:</label>
-
-                                <select name="node3-pos" id="position-select3" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-                            </div>
-
-                            <div class="four NODE" id="node4">
-                                <h3>previous:purple</h3><i class="fas fa-bug orange">ORANGE</i><h3>next:green</h3>
-                                <label for="position-select4" id="labelposition-select4">Choose a position:</label>
-
-                                <select name="node4-pos" id="position-select4" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-                            </div>
-                            <div class="five NODE" id="node5">
-                                <h3>previous:orange</h3><i class="fas fa-bug green">GREEN</i><h3>HIDDEN</h3>
-                                <label for="position-select5" id="labelposition-select5">Choose a position:</label>
-
-                                <select name="node5-pos" id="position-select5" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-                            </div>
-                            <div class="six NODE" id="node6">
-                                <h3>HIDDEN</h3><i class="fas fa-bug black">BLACK</i><h3>next: None</h3>
-                                <label for="position-select6" id="labelposition-select6">Choose a position:</label>
-
-                                <select name="node6-pos" id="position-select6" onchange="selection_made(this)">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option value="BEGIN">BEGIN NODE</option>
-                                    <option value="NODE2">NODE 2</option>
-                                    <option value="NODE3">NODE 3</option>
-                                    <option value="NODE4">NODE 4</option>
-                                    <option value="NODE5">NODE 5</option>
-                                    <option value="END">END NODE</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="wrapper2" id="target">
-                            <div class="DROPNODE" id="BEGIN" title="The beginning node in the list"><h3>BEGIN/HEAD</h3></div>
-                            <div class="DROPNODE" id="NODE2" title="The second node in the list"><h3>NODE 2</h3></div>
-                            <div class="DROPNODE" id="NODE3" title="The third node in the list"><h3>NODE 3</h3></div>
-                            <div class="DROPNODE" id="NODE4" title="The fourth node in the list"><h3>NODE 4</h3></div>
-                            <div class="DROPNODE" id="NODE5" title="The fifth node in the list"><h3>NODE 5</h3></div>
-                            <div class="DROPNODE" id="END" title="The last node in the list."><h3>LAST/TAIL NODE</h3></div>
-                        </div>
-                        <!-- row-centers end-->
-                    </div>
-                </div>
-                <div class="hidden" id="results">
-                    <h2 id="gameover">GAMEOVER</h2>
-                    <h3 id="score"></h3>
-                </div>
 
 
 
-            </div>
+
+    <button class="btn btn-primary long" onclick="win()">Check Your Solution</button>
 
 
+
+
+    <div class="node-container">
+
+        <div class="node-cell dark unblur">
+
+            <h1>NODE Z</h1>
+
+            <label class="prev animate-right" for="select1">🢀🢀🢀 Prev</label>
+            <select id="select1" class="drop-choice-top">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+
+            <img class="diode" src="diode.png" />
+
+            <label class="next animate-left" for="select1a">Next 🢂🢂🢂</label>
+            <select id="select1a" class="drop-choice-bottom">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
         </div>
-    </main>
-    <footer id="footer" class="flex-center-full"> &#169; Nellie Tobey 2020 </footer>
+
+
+        <div class="node-cell light unblur">
+            <h1>NODE X</h1>
+
+            <label class="prev animate-right" for="select2">🢀🢀🢀 Previous</label>
+            <select id="select2" class="drop-choice-top">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+
+            <img class="diode" src="diode2.png" />
+
+            <label class="next animate-left" for="select2a">Next 🢂🢂🢂</label>
+            <select id="select2a" class="drop-choice-bottom">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+        </div>
+
+
+        <div class="node-cell dark unblur">
+
+            <h1>NODE B</h1>
+
+            <label class="prev animate-right" for="select3">🢀🢀🢀 Prev</label>
+            <select id="select3" class="drop-choice-top">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+
+            <img class="diode" src="diode3.png" />
+
+            <label class="next animate-left" for="select3a">Next 🢂🢂🢂</label>
+            <select id="select3a" class="drop-choice-bottom">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+        </div>
+
+        <div class="node-cell light unblur">
+
+            <h1>NODE C</h1>
+
+            <label class="prev animate-right" for="select4">🢀🢀🢀 Prev</label>
+            <select id="select4" class="drop-choice-top">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+
+            <img class="diode" src="diode4.png" />
+
+            <label class="next animate-left" for="select4a">Next 🢂🢂🢂</label>
+            <select id="select4a" class="drop-choice-bottom">
+                <option>None</option>
+                <option>Z</option>
+                <option>X</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+        </div>
+
+
+
+    </div>
+
+    <footer class="bottom">
+        <div class="chip"></div>
+        <h3> &copy; Nellie Tobey 2021</h3>
+
+    </footer>
+   
+
+
+
 
 
 </body>
