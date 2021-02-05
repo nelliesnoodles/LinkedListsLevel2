@@ -1,6 +1,6 @@
 # Link the Node
 
-()[]
+![Screenshot of game](https://)
 
 ## Goal
 
